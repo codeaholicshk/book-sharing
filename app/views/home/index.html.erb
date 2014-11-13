@@ -1,5 +1,12 @@
 <h1>Codeaholics HK - Book Sharing</h1>
 
+<div class="alert alert-success" role="alert">
+  Lastest recommendation:
+  <strong><%= @lastest_recommendation.name %></strong>
+  recommended by
+  <strong><%= @lastest_recommendation.suggested_by %></strong>
+</div>
+
 <table class="table">
   <thead>
     <tr>
@@ -11,7 +18,7 @@
 
   <tbody>
     <% @books.each do |book| %>
-      <tr>
+      <tr class="<%= 'success' if @lastest_recommendation.id == book.id %>">
         <td><%= book.name %></td>
         <td><%= link_to "External Link", book.reference_url %></td>
         <td><%= book.suggested_by %></td>
